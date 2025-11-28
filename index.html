@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #e9f1fc 0%, #fbe9ec 100%);
+      font-family: 'Inter', Arial, sans-serif;
+      margin: 0;
+    }
+    .topnav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50px;
+      background-color: #333;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+    }
+    .topnav a {
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 20px;
+      font-size: 17px;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .topnav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+    .sidebar {
+      position: fixed;
+      top: 50px;
+      left: 0;
+      width: 220px;
+      height: calc(100% - 50px);
+      background-color: #f1f1f1;
+      border-right: 1px solid #ccc;
+      padding: 20px 0 0 0;
+      z-index: 500;
+    }
+    .sidebar a {
+      display: block;
+      color: black;
+      padding: 10px 22px;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      font-size: 17px;
+    }
+    .sidebar a:hover {
+      background-color: #555;
+      color: white;
+    }
+    .content {
+      margin-left: 240px;
+      margin-top: 50px;
+      padding: 32px;
+      max-width: 900px;
+    }
+    .section-box {
+      background: #fff;
+      margin-bottom: 24px;
+      padding: 24px;
+      border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+    .title {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      text-align: center;
+      font-size: 54px;
+      font-weight: bold;
+      margin: 0 0 24px 0;
+    }
+    .fixed-text {
+      font-size: 38px;
+      font-weight: bold;
+      margin: 0 0 18px 0;
+      text-align: center;
+      color: #183153;
+    }
+    .about-me {
+      font-size: 23px;
+      font-weight: 500;
+      margin-top: 25px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    h2 {
+      font-size: 32px;
+      margin-top: 0;
+      margin-bottom: 15px;
+      color: #2a3558;
+      text-align: center;
+    }
+    img {
+      display: block;
+      margin: 18px auto;
+      width: 220px;
+      max-width: 100%;
+      height: auto;
+      border-radius: 7px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+      transition: box-shadow 0.2s;
+    }
+    img:hover {
+      box-shadow: 0 4px 18px rgba(72, 136, 255, 0.15);
+      background-color: lightgray;
+    }
+    .hobbies-list {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 24px;
+    }
+    .family-text {
+      font-size: 22px;
+      line-height: 1.55;
+      color: #353535;
+      text-align: center;
+      margin: 0 auto;
+      max-width: 750px;
+    }
+    @media (max-width: 800px) {
+      .content {
+        margin-left: 0;
+        padding: 18px;
+        max-width: 100%;
+      }
+      .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        background: #eee;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .sidebar a {
+        padding: 8px 16px;
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2 id="section1">Introduction</h2>
+  <div class="topnav" id="myTopnav">
+    <a href="Home.html">Home</a>
+    <a href="html/À propos.html">À propos</a>
+    <a href="html/Contact.html">Contact</a>
+    <a href="html/Sources.html">Sources</a>
+  </div>
+
+  <div class="sidebar">
+    <a href="#section1">Introduction</a>
+    <a href="#section2">Passes temps</a>
+    <a href="#section3">Ma famille</a>
+    <a href="#section4">Conclusion</a>
+  </div>
+
+  <div class="content">
+    <div class="section-box">
+      <div class="title">Siteweb</div>
+      <div class="fixed-text">Vytas Rosales</div>
+      <img src="https://cdn-icons-png.flaticon.com/512/3276/3276535.png" alt="Vytas Icon">
+      <div class="about-me">
+        Bonjour je m'appelle Vytas, je suis un étudiant à l'école secondaire
+        <a href="https://julesverne.csf.bc.ca">Jules-Verne</a>.<br />
+        Bienvenue à mon site !!!<br>
+        N’hésitez pas à cliquer sur les boutons pour apprendre plus à propos de moi.
+      </div>
+    </div>
+    <div class="section-box">
+      <h2 id="section2">Mes Passes Temps</h2>
+      <div class="hobbies-list">
+      <a href="html/Guitare.html">
+          <img src="https://www.washburn.com/wp-content/uploads/2019/01/BTSC56SCE-D-U-front.png" alt="Guitare" />
+        </a>
+        <a href="html/Cadets.html">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/RCACC_Badge.svg" alt="Cadets" />
+        </a>
+        <a href="html/Karate.html">
+          <img src="https://freesvg.org/img/karateguy.png" alt="Karate" />
+        </a>
+      </div>
+    </div>
+    <div class="section-box">
+      <h2 id="section3">Ma Famille</h2>
+      <p class="family-text">
+        Ma famille se compose de moi, ma sœur, ma mère, mon père et deux chats de compagnie.<br>
+        Je m’appelle Vytas Javier Rosales, né en août 2010 à Vancouver.<br>
+        Ma mère, Maria Térésa Javier, est née dans les îles des Philippines.<br>
+        Étant la plus jeune de ses quatre frères et sœurs, dès un jeune âge, toute leur famille est venue s’installer sur une île au Canada près de Vancouver Island où ma mère a fini ses études secondaires.<br>
+        Mon père, Roberto Rosales, est né au Venezuela et y a vécu toute sa jeunesse avant de partir pour le Canada où il a terminé ses études à l’université UBC.<br>
+        Ma sœur Sahara, née ici, a diplômé de Jules Verne et poursuit maintenant ses études à l’école McGill.<br>
+        Mes deux chats, Minou et Dash. Minou est un chat bicolore, noir et blanc, qui aime dormir. Dash est un chat orange plein d’énergie.
+      </p>
+    </div>
+    <div class="section-box">
+      <h2 id="section4">Conclusion</h2>
+      <p class="family-text">Content for conclusion...</p>
+    </div>
+  </div>
+</body>
+</html>

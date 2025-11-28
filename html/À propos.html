@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>À propos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style media="screen">
+  body {
+  height: 100vh;
+  background: linear-gradient(135deg, #e9f1fc 0%, #fbe9ec 100%);
+  font-family: 'Inter', Arial, sans-serif;
+  margin: 0;
+  }
+    .topnav {
+      background-color: #333;
+      overflow: hidden;
+    }
+    .title {
+   text-align: center; /* Center horizontally */
+   font-size: 54px;
+   font-weight: bold;
+   margin-top: 20px; /* Space from top */
+ }
+    .topnav a {
+      float: left;
+      display: block;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+    .topnav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+    .topnav .icon {
+      display: none;
+    }
+    @media screen and (max-width: 600px) {
+      .topnav a:not(:first-child) {display: none;}
+      .topnav a.icon {
+        float: right;
+        display: block;
+      }
+    }
+    @media screen and (max-width: 600px) {
+      .topnav.responsive {position: relative;}
+      .topnav.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      .topnav.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+        }
+      }
+      .texte {
+     text-align: center;
+     font-size: 45px;
+     margin-top: 16px;
+     margin-bottom: 30px;
+    }
+    p {
+      text-align: center;
+      font-size: 40px;
+      margin-top: 20px;
+    }
+    .section-box {
+     background: #fff;
+     margin-bottom: 50px;
+     padding: 2px;
+     border-radius: 10px;
+     box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+   }
+  </style>
+</head>
+<body>
+
+  <div class="topnav" id="myTopnav">
+    <a href="../index.html" class="active">Home</a>
+    <a href="À propos.html">À propos</a>
+    <a href="Contact.html">Contact</a>
+    <a href="Sources.html">Sources</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+  <script>
+    function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      } else {
+        x.className = "topnav";
+      }
+    }
+  </script>
+      <div class="title">À propos</div>
+        <div class="texte">Le projet</div>
+    <div class="section-box">
+  <p>
+Ce site web est un portfolio personnel pour un cours de<br> 10<sup>e</sup> à l'école Jules-Verne. Il montre ma vie, mes habitudes,<br> ma famille, mes origines, etc. J'ai essayé de présenter<br> différents aspects de ma vie dans ce portfolio afin de<br> montrer qui je suis. </p> </div>
+<div class="section-box">
+  <p>
+Ce qui était un défi était le topnav et le sidebar à cause des<br> complications de problèmes de positionnement. Mais après<br> que j'ai résolu ces deux, le reste du codage était très<br> amusant et sympa. </p>
+</div>
+
+</body>
+</html>
