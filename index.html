@@ -5,6 +5,38 @@
   <title>Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
+
+        #loginOverlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #f5f0c9 100%);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 9999;
+        }
+
+        #loginForm {
+            background: white; padding: 40px; border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3); text-align: center;
+            max-width: 350px; width: 90%;
+        }
+
+        #loginForm h2 { color: #333; margin-bottom: 30px; }
+
+        input { width: 100%; padding: 15px; margin: 10px 0; border: 2px solid #ddd;
+                border-radius: 8px; font-size: 16px; box-sizing: border-box; }
+
+        input:focus { border-color: #667eea; outline: none; }
+
+        button { background: #667eea; color: white; border: none; padding: 15px;
+                 border-radius: 8px; font-size: 16px; cursor: pointer; width: 100%;
+                 margin-top: 10px; transition: background 0.3s; }
+
+        button:hover { background: #5a67d8; }
+
+        #error { color: #e53e3e; margin-top: 10px; display: none; }
+
+      
+        #mainContent { display: none; padding: 20px; }
+
     body {
       background: linear-gradient(135deg, #e9f1fc 0%, #fbe9ec 100%);
       font-family: 'Inter', Arial, sans-serif;
@@ -145,67 +177,126 @@
         padding: 8px 16px;
         font-size: 15px;
       }
+
     }
   </style>
 </head>
+<script>
+
+    function checkLogin() {
+        const email = document.getElementById('emailInput').value;
+        const password = document.getElementById('passInput').value;
+        const errorMsg = document.getElementById('error');
+        const loginOverlay = document.getElementById('loginOverlay');
+        const mainContent = document.getElementById('mainContent');
+
+
+        const validEmail = "vytas@exemple.com";
+        const validPassword = "123";
+
+        if (email === validEmail && password === validPassword) {
+
+            loginOverlay.style.display = 'none';
+            mainContent.style.display = 'block';
+
+
+            localStorage.setItem('isLoggedIn', 'true');
+        } else {
+
+            errorMsg.style.display = 'block';
+        }
+    }
+
+
+    function logout() {
+        localStorage.removeItem('isLoggedIn');
+        location.reload();
+    }
+
+
+    window.onload = function() {
+        if (localStorage.getItem('isLoggedIn') === 'true') {
+            document.getElementById('loginOverlay').style.display = 'none';
+            document.getElementById('mainContent').style.display = 'block';
+        }
+    }
+</script>
 <body>
-  <h2 id="section1">Introduction</h2>
-  <div class="topnav" id="myTopnav">
-    <a href="Home.html">Home</a>
-    <a href="html/À propos.html">À propos</a>
-    <a href="html/Contact.html">Contact</a>
-    <a href="html/Sources.html">Sources</a>
+  <div id="loginOverlay">
+    <div id="loginForm">
+        <h2>Se connecter</h2>
+        <input type="email" id="emailInput" placeholder="Inserer votre email">
+        <input type="password" id="passInput" placeholder="Mot de passe">
+        <button onclick="checkLogin()">Connecter</button>
+        <div id="error">❌ Wrong email or password!</div>
+    </div>
+</div>
+
+
+<div id="mainContent">
   </div>
 
-  <div class="sidebar">
-    <a href="#section1">Introduction</a>
-    <a href="#section2">Passes temps</a>
-    <a href="#section3">Ma famille</a>
-    <a href="#section4">Conclusion</a>
-  </div>
+    <h2 id="section1">Introduction</h2>
+    <div class="topnav" id="myTopnav">
+      <a href="Home.html">Home</a>
+      <a href="html/À propos.html">À propos</a>
+      <a href="html/Contact.html">Contact</a>
+      <a href="html/Sources.html">Sources</a>
+    </div>
 
-  <div class="content">
-    <div class="section-box">
-      <div class="title">Siteweb</div>
-      <div class="fixed-text">Vytas Rosales</div>
-      <img src="https://cdn-icons-png.flaticon.com/512/3276/3276535.png" alt="Vytas Icon">
-      <div class="about-me">
-        Bonjour je m'appelle Vytas, je suis un étudiant à l'école secondaire
-        <a href="https://julesverne.csf.bc.ca">Jules-Verne</a>.<br />
-        Bienvenue à mon site !!!<br>
-        N’hésitez pas à cliquer sur les boutons pour apprendre plus à propos de moi.
+    <div class="sidebar">
+      <a href="#section1">Introduction</a>
+      <a href="#section2">Passes temps</a>
+      <a href="#section3">Ma famille</a>
+      <a href="#section4">Conclusion</a>
+    </div>
+
+    <div class="content">
+      <div class="section-box">
+        <div class="title">Siteweb</div>
+        <div class="fixed-text">Vytas Rosales</div>
+        <img src="https://cdn-icons-png.flaticon.com/512/3276/3276535.png" alt="Vytas Icon">
+        <div class="about-me">
+          Bonjour je m'appelle Vytas, je suis un étudiant à l'école secondaire
+          <a href="https://julesverne.csf.bc.ca">Jules-Verne</a>.<br />
+          Bienvenue à mon site !!!<br>
+          N’hésitez pas à cliquer sur les boutons pour apprendre plus à propos de moi.
+        </div>
       </div>
-    </div>
-    <div class="section-box">
-      <h2 id="section2">Mes Passes Temps</h2>
-      <div class="hobbies-list">
-      <a href="html/Guitare.html">
-          <img src="https://www.washburn.com/wp-content/uploads/2019/01/BTSC56SCE-D-U-front.png" alt="Guitare" />
-        </a>
-        <a href="html/Cadets.html">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/RCACC_Badge.svg" alt="Cadets" />
-        </a>
-        <a href="html/Karate.html">
-          <img src="https://freesvg.org/img/karateguy.png" alt="Karate" />
-        </a>
+      <div class="section-box">
+        <h2 id="section2">Mes Passes Temps</h2>
+        <div class="hobbies-list">
+        <a href="html/Guitare.html">
+            <img src="https://www.washburn.com/wp-content/uploads/2019/01/BTSC56SCE-D-U-front.png" alt="Guitare" />
+          </a>
+          <a href="html/Cadets.html">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/RCACC_Badge.svg" alt="Cadets" />
+          </a>
+          <a href="html/Karate.html">
+            <img src="https://freesvg.org/img/karateguy.png" alt="Karate" />
+          </a>
+        </div>
       </div>
-    </div>
-    <div class="section-box">
-      <h2 id="section3">Ma Famille</h2>
-      <p class="family-text">
-        Ma famille se compose de moi, ma sœur, ma mère, mon père et deux chats de compagnie.<br>
-        Je m’appelle Vytas Javier Rosales, né en août 2010 à Vancouver.<br>
-        Ma mère, Maria Térésa Javier, est née dans les îles des Philippines.<br>
-        Étant la plus jeune de ses quatre frères et sœurs, dès un jeune âge, toute leur famille est venue s’installer sur une île au Canada près de Vancouver Island où ma mère a fini ses études secondaires.<br>
-        Mon père, Roberto Rosales, est né au Venezuela et y a vécu toute sa jeunesse avant de partir pour le Canada où il a terminé ses études à l’université UBC.<br>
-        Ma sœur Sahara, née ici, a diplômé de Jules Verne et poursuit maintenant ses études à l’école McGill.<br>
-        Mes deux chats, Minou et Dash. Minou est un chat bicolore, noir et blanc, qui aime dormir. Dash est un chat orange plein d’énergie.
-      </p>
-    </div>
-    <div class="section-box">
-      <h2 id="section4">Conclusion</h2>
-      <p class="family-text">Content for conclusion...</p>
-    </div>
+      <div class="section-box">
+        <h2 id="section3">Ma Famille</h2>
+        <p class="family-text">
+          Ma famille se compose de moi, ma sœur, ma mère, mon père et deux chats de compagnie.<br>
+          Je m’appelle Vytas Javier Rosales, né en août 2010 à Vancouver.<br>
+          Ma mère, Maria Térésa Javier, est née dans les îles des Philippines.<br>
+          Étant la plus jeune de ses quatre frères et sœurs, dès un jeune âge, toute leur famille est venue s’installer sur une île au Canada près de Vancouver Island où ma mère a fini ses études secondaires.<br>
+          Mon père, Roberto Rosales, est né au Venezuela et y a vécu toute sa jeunesse avant de partir pour le Canada où il a terminé ses études à l’université UBC.<br>
+          Ma sœur Sahara, née ici, a diplômé de Jules Verne et poursuit maintenant ses études à l’école McGill.<br>
+          Mes deux chats, Minou et Dash. Minou est un chat bicolore, noir et blanc, qui aime dormir. Dash est un chat orange plein d’énergie.
+        </p>
+      </div>
+      <div class="section-box">
+        <h2 id="section4">Conclusion</h2>
+        <p class="family-text">Content for conclusion...</p>
+      </div>
+
+    <button onclick="logout()" style="background:#e53e3e; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer;">
+        Logout
+    </button>
   </div>
 </body>
 </html>
