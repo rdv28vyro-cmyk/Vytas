@@ -34,7 +34,7 @@
 
         #error { color: #e53e3e; margin-top: 10px; display: none; }
 
-      
+
         #mainContent { display: none; padding: 20px; }
 
     body {
@@ -182,48 +182,93 @@
   </style>
 </head>
 <script>
+    let isSignUpMode = false;
 
-    function checkLogin() {
-        const email = document.getElementById('emailInput').value;
-        const password = document.getElementById('passInput').value;
+  
+    function toggleMode() {
+        isSignUpMode = !isSignUpMode;
+        const title = document.getElementById('formTitle');
+        const btn = document.getElementById('submitBtn');
+        const toggle = document.getElementById('toggleText');
         const errorMsg = document.getElementById('error');
-        const loginOverlay = document.getElementById('loginOverlay');
-        const mainContent = document.getElementById('mainContent');
 
+        errorMsg.style.display = 'none';
 
-        const validEmail = "vytas@exemple.com";
-        const validPassword = "123";
-
-        if (email === validEmail && password === validPassword) {
-
-            loginOverlay.style.display = 'none';
-            mainContent.style.display = 'block';
-
-
-            localStorage.setItem('isLoggedIn', 'true');
+        if (isSignUpMode) {
+            title.innerText = "S'inscrire";
+            btn.innerText = "Créer mon compte";
+            toggle.innerText = "Déjà un compte ? Se connecter";
         } else {
-
-            errorMsg.style.display = 'block';
+            title.innerText = "Se connecter";
+            btn.innerText = "Connecter";
+            toggle.innerText = "Pas de compte ? S'inscrire";
         }
     }
 
+
+    function handleAuth() {
+        const email = document.getElementById('emailInput').value;
+        const password = document.getElementById('passInput').value;
+        const errorMsg = document.getElementById('error');
+
+        if (!email || !password) {
+            errorMsg.innerText = "Veuillez remplir tous les champs.";
+            errorMsg.style.display = 'block';
+            return;
+        }
+
+        if (isSignUpMode) {
+
+            localStorage.setItem('userEmail', email);
+            localStorage.setItem('userPassword', password);
+            alert("Compte créé ! Vous pouvez maintenant vous connecter.");
+            toggleMode();
+        } else {
+            const storedEmail = localStorage.getItem('userEmail');
+            const storedPass = localStorage.getItem('userPassword');
+
+            if (email === storedEmail && password === storedPass) {
+                loginSuccess();
+            } else {
+                errorMsg.innerText = "❌ Email ou mot de passe incorrect !";
+                errorMsg.style.display = 'block';
+            }
+        }
+    }
+
+    function loginSuccess() {
+        document.getElementById('loginOverlay').style.display = 'none';
+        document.getElementById('mainContent').style.display = 'block';
+        localStorage.setItem('isLoggedIn', 'true');
+    }
 
     function logout() {
         localStorage.removeItem('isLoggedIn');
         location.reload();
     }
 
-
     window.onload = function() {
         if (localStorage.getItem('isLoggedIn') === 'true') {
-            document.getElementById('loginOverlay').style.display = 'none';
-            document.getElementById('mainContent').style.display = 'block';
+            loginSuccess();
         }
     }
 </script>
+
 <body>
   <div id="loginOverlay">
+    <div id="loginOverlay">
     <div id="loginForm">
+        <h2 id="formTitle">Se connecter</h2>
+        <input type="email" id="emailInput" placeholder="Email">
+        <input type="password" id="passInput" placeholder="Mot de passe">
+        <button id="submitBtn" onclick="handleAuth()">Se connecter</button>
+
+        <p id="toggleText" style="margin-top:15px; cursor:pointer; color:#667eea;" onclick="toggleMode()">
+            Pas de compte ? S'inscrire
+        </p>
+        <div id="error"></div>
+    </div>
+</div>
         <h2>Se connecter</h2>
         <input type="email" id="emailInput" placeholder="Inserer votre email">
         <input type="password" id="passInput" placeholder="Mot de passe">
