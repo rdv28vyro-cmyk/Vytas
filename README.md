@@ -1,2 +1,0 @@
-# Vytas
-Portfolio personelle
